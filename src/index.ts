@@ -3,6 +3,7 @@ import cors from 'cors'
 import { AddressInfo } from "net"
 import { criarTurma } from './data/endpoints/criarTurma';
 import { adicionarEstudanteTurma } from './data/endpoints/adicionarEstudanteTurma';
+import { criarEstudante } from './data/endpoints/criarEstudante';
 
 const app: Express = express();
 
@@ -19,5 +20,5 @@ const server = app.listen(process.env.PORT || 3003, () => {
 })
 
 app.post("/turma",criarTurma)
-
 app.post("/adicionarEstudanteTurma/:id", adicionarEstudanteTurma)
+app.post("/estudante",criarEstudante)
