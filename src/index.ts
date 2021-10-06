@@ -1,6 +1,7 @@
 import express, {Express} from 'express'
 import cors from 'cors'
 import { AddressInfo } from "net"
+import { criarTurma } from './data/endpoints/criarTurma';
 
 const app: Express = express();
 
@@ -15,3 +16,5 @@ const server = app.listen(process.env.PORT || 3003, () => {
        console.error(`Failure upon starting server.`);
     }
 })
+
+app.post("/turma",criarTurma)
