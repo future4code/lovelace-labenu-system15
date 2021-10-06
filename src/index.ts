@@ -2,6 +2,7 @@ import express, {Express} from 'express'
 import cors from 'cors'
 import { AddressInfo } from "net"
 import { criarTurma } from './data/endpoints/criarTurma';
+import { criarEstudante } from './data/endpoints/criarEstudante';
 
 const app: Express = express();
 
@@ -18,3 +19,4 @@ const server = app.listen(process.env.PORT || 3003, () => {
 })
 
 app.post("/turma",criarTurma)
+app.post("/estudante",criarEstudante)

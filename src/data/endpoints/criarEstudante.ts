@@ -1,25 +1,24 @@
 import { Request, Response } from "express"
 import { connection } from "../connection"
 
-export const criarTurma = async(
+export const criarEstudante = async(
    req: Request,
    res: Response
    ): Promise<void> =>{
    try {
 
-      let {nome,data_inicial,data_final,modulo}=req.body
+      let {nome,email,data_nasc,turma_id}=req.body
 
       await connection.raw(`
-      INSERT INTO turma (nome, data_inicial, data_final, modulo)
+      INSERT INTO estudante (nome, email, data_nasc,turma_id)
       VALUES (
        "${nome}",
-       "${data_inicial}",
-       "${data_final}",
-       "${modulo}"
+       "${email}",
+       "${data_nasc}",
+       "${turma_id}"
       );    
     `)
-    console.log('data',data_inicial)
-         res.status(200).send("tabela criada")
+         res.status(200).send(" estudante adicionado")
          
    } catch (error:any) {
       console.log(error.message)
