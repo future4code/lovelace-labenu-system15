@@ -4,6 +4,7 @@ import { AddressInfo } from "net"
 import { criarTurma } from './data/endpoints/criarTurma';
 import { adicionarEstudanteTurma } from './data/endpoints/adicionarEstudanteTurma';
 import { criarEstudante } from './data/endpoints/criarEstudante';
+import { adicionarDocenteTurma } from './data/endpoints/adicionarDocenteTurma';
 
 const app: Express = express();
 
@@ -21,4 +22,5 @@ const server = app.listen(process.env.PORT || 3003, () => {
 
 app.post("/turma",criarTurma)
 app.post("/adicionarEstudanteTurma/:id", adicionarEstudanteTurma)
+app.post("/adicionarDocenteTurma/:id", adicionarDocenteTurma)
 app.post("/estudante",criarEstudante)
