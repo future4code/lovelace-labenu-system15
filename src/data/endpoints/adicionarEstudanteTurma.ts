@@ -15,8 +15,34 @@ export const adicionarEstudanteTurma = async (req: Request, res: Response ) => {
     let errorCode = 400 
     
     try {
-        await
-            req.params.id 
+
+        let estudantes = await connection("estudante")
+        .select("*")
+        
+        let turma  = await connection("turma")
+        .select("*")
+
+        let encontraEstudante=estudantes.find((estudante)=>{
+           return estudante.id===req.body.id
+        })
+  
+        if(!encontraEstudante){
+            errorCode=404
+           throw new Error("esse aluno  não esta cadastrado no sistema")
+        }
+
+        let encontraTurma=turma.find((turma)=>{
+            return turma.id===req.body.turma_id
+         })
+   
+         if(!encontraTurma){
+             errorCode=404
+            throw new Error("essa turma  não esta cadastrado no sistema")
+         }
+
+
+
+
             adicionarEstudanteNaTurma (
                 req.body.id,
                 req.body.turma_id
