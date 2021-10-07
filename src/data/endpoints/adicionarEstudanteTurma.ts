@@ -40,9 +40,6 @@ export const adicionarEstudanteTurma = async (req: Request, res: Response ) => {
             throw new Error("essa turma  não esta cadastrado no sistema")
          }
 
-
-
-
             adicionarEstudanteNaTurma (
                 req.body.id,
                 req.body.turma_id

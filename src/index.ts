@@ -21,6 +21,6 @@ const server = app.listen(process.env.PORT || 3003, () => {
 })
 
 app.post("/turma",criarTurma)
-app.post("/adicionarEstudanteTurma/:id", adicionarEstudanteTurma)
-app.post("/adicionarDocenteTurma/:id", adicionarDocenteTurma)
+app.post("/adicionarEstudanteTurma", adicionarEstudanteTurma)
+app.post("/adicionarDocenteTurma", adicionarDocenteTurma)
 app.post("/estudante",criarEstudante)

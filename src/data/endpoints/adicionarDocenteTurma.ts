@@ -27,7 +27,7 @@ export const adicionarDocenteTurma = async (req: Request, res: Response ) => {
   
         if(!encontraDocente){
             errorCode=404
-           throw new Error("esse docente não esta cadastrado no sistema")
+           throw new Error("esse docente não esta cadastrado no sistema .")
         }
         let encontraTurma=turma.find((turma)=>{
             return turma.id===req.body.turma_id
