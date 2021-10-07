@@ -1,36 +1,34 @@
 import { Request, Response } from "express"
 import { connection } from "../connection"
 
-const adicionarEstudanteNaTurma = async ( 
+const adicionarDocenteNaTurma = async ( 
     id: number, turma_id: number
 ) : Promise <any> => {
-    await connection ('estudante')
+    await connection ('docente')
     .update ({
         turma_id: turma_id
     })
     .where('id', id)
 }
 
-export const adicionarEstudanteTurma = async (req: Request, res: Response ) => {
+export const adicionarDocenteTurma = async (req: Request, res: Response ) => {
     let errorCode = 400 
-    
     try {
 
-        let estudantes = await connection("estudante")
+        let docentes = await connection("docente")
         .select("*")
         
         let turma  = await connection("turma")
         .select("*")
 
-        let encontraEstudante=estudantes.find((estudante)=>{
-           return estudante.id===req.body.id
+        let encontraDocente=docentes.find((docente)=>{
+           return docente.id===req.body.id
         })
   
-        if(!encontraEstudante){
+        if(!encontraDocente){
             errorCode=404
-           throw new Error("esse aluno  não esta cadastrado no sistema")
+           throw new Error("esse docente não esta cadastrado no sistema .")
         }
-
         let encontraTurma=turma.find((turma)=>{
             return turma.id===req.body.turma_id
          })
@@ -40,12 +38,12 @@ export const adicionarEstudanteTurma = async (req: Request, res: Response ) => {
             throw new Error("essa turma  não esta cadastrado no sistema")
          }
 
-            adicionarEstudanteNaTurma (
+            adicionarDocenteNaTurma (
                 req.body.id,
                 req.body.turma_id
             )
         
-        res.status(200).send('Estudante adicionado a turma')
+        res.status(200).send('docente adicionado a turma')
        
     } catch (error: any) {
         res.status(errorCode).send ({message: error.message})
