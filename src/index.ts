@@ -5,6 +5,7 @@ import { criarTurma } from './data/endpoints/criarTurma';
 import { adicionarEstudanteTurma } from './data/endpoints/adicionarEstudanteTurma';
 import { criarEstudante } from './data/endpoints/criarEstudante';
 import { adicionarDocenteTurma } from './data/endpoints/adicionarDocenteTurma';
+import { criarDocente } from './data/endpoints/criarDocente';
 
 const app: Express = express();
 
@@ -21,6 +22,7 @@ const server = app.listen(process.env.PORT || 3003, () => {
 })
 
 app.post("/turma",criarTurma)
-app.post("/adicionarEstudanteTurma", adicionarEstudanteTurma)
-app.post("/adicionarDocenteTurma", adicionarDocenteTurma)
+app.put("/adicionarEstudanteTurma", adicionarEstudanteTurma)
+app.put("/adicionarDocenteTurma", adicionarDocenteTurma)
 app.post("/estudante",criarEstudante)
+app.post ("/docente", criarDocente)
